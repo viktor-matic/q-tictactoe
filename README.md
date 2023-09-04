@@ -41,6 +41,7 @@ python tictactoe.py -p -e 0 -v
 ```
 After the program starts, follow the instructions to play.
 Here is what you should see:
+
 <img width="1079" alt="term_snapshot" src="https://github.com/viktor-matic/q-tictactoe/assets/104584579/77f66315-20c0-473a-b985-5f34d1fee4f1">
 
 
