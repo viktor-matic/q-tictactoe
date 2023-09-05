@@ -29,17 +29,21 @@ In training mode, two AI players will play against each other to learn the game.
 ```bash
 python tictactoe.py --iters 800000 --epsilon 0.5
 ```
-After the training process, two pickle files will be generated. These files hold serialized versions of the Q dictionary for each agent. These files can be used to load the trained agents for future games without needing to retrain them. The files are named `player_1_(3x3)_3.pkl` and `player_1_(3x3)_3.pkl` and located in `saved_state` directory for player 1 and player 2 respectively.
-Depending on the number of iterations set, on training invocation, the training process can take from a few minutes to a dozen, or more.
+After the training process, two pickle files will be generated. These files hold serialized versions of the Q dictionary for each agent. These files can load the trained agents for future games without retraining them. The files are named `player_1_(3x3)_3.pkl` and `player_1_(3x3)_3.pkl` and located in `saved_state` directory for player 1 and player 2 respectively.
+Depending on the number of iterations set on training invocation, the training process can take a few minutes to a dozen or more.
 
 ## Play Mode
 
-To start playing against the trained agent we need to wait for training to complete and generate files described above.  
+To start playing against the trained agent, we need to wait for training to complete and generate the files described above.  
 
 ```bash
 python tictactoe.py -p -e 0 -v
 ```
-After the program starts follow the instructions to play.
+After the program starts, follow the instructions to play.
+Here is what you should see:
+
+<img width="1079" alt="term_snapshot" src="https://github.com/viktor-matic/q-tictactoe/assets/104584579/77f66315-20c0-473a-b985-5f34d1fee4f1">
+
 
 
 
