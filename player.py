@@ -17,13 +17,13 @@ class Player:
     learn_from_model (int): The number of times to learn from the model in each step.
     """
     
-    def __init__(self, player, board, epsilon=0.2, gamma=0.9, alpha=0.5, learn_from_model=500):
+    def __init__(self, player, board, epsilon=0.2, gamma=0.9, alpha=0.5, learn_from_model=500, Q = dict()):
         self.epsilon = epsilon
         self.gamma = gamma
         self.alpha = alpha
         self.board = board
         self.player = player
-        self.Q = dict()
+        self.Q = Q
         self.model = dict()
         self.last_state = None
         self.learn_from_model = learn_from_model
