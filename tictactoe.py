@@ -117,6 +117,15 @@ def main():
     rows, cols = list(map(int, args.board_dimensions.replace(" ", "").split('x')))
     
     if not args.play:
+        print(f"Training parameters: \n"
+                f"Rows: {rows}\n"
+                f"Columns: {cols}\n"
+                f"Strike Length: {args.strike_length}\n"
+                f"Training Iterations: {args.iters}\n"
+                f"Learn from Model: {args.learn_from_model}\n"
+                f"Alpha: {args.learning_rate}\n"
+                f"Epsilon: {args.epsilon}")
+        
         p1, p2 = train.train(rows=rows, cols=cols, 
                     strike_length=args.strike_length, 
                     training_iterations=args.iters, 
