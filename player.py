@@ -62,7 +62,11 @@ class Player:
         the_best_action, max_value = max(free_positions_values.items(), key=lambda x: x[1], default=(None, 0))
         return max_value, the_best_action
     
-    def update_q(self, state, action, reward):
+    def reset(self):
+        self.last_action = None
+        self.last_state = None
+
+    def update_q(self, state, reward, terminal_state = False):
         """
         This function updates the Q value for a given state-action pair based on the reward received.
         It also updates the model with the new state-action pair and reward.
