@@ -26,6 +26,7 @@ class Player:
         self.Q = Q
         self.model = dict()
         self.last_state = None
+        self.last_action = None
         self.learn_from_model = learn_from_model
         if self.player not in [1, 2]:
             raise ValueError("Player can be either 1 or 2.")
@@ -72,6 +73,7 @@ class Player:
         action (tuple): The action that was taken.
         reward (float): The reward received for taking the action.
         """
+        action=self.last_action
         last_state_hash = self.board.state_hash(self.last_state)
         max_value, _ = self._get_max_value_and_action(state)
         self.initialize_Q_state_action_pair(last_state_hash, action)
@@ -80,7 +82,7 @@ class Player:
         self.model.setdefault(last_state_hash, {}).update({action: (reward, state)})
         
         # Update Q value for the last state-action pair based on the reward received
-        self.Q[last_state_hash][action] += self.alpha * (reward + (0 if reward == 1 else self.gamma * max_value) - self.Q[last_state_hash][action])
+        self.Q[last_state_hash][action] += self.alpha * (reward + (0 if terminal_state else self.gamma * max_value) - self.Q[last_state_hash][action])
         
         # Learn from the model by updating the Q values for a number of randomly chosen state-action pairs
         for _ in range(self.learn_from_model):
@@ -109,4 +111,5 @@ class Player:
         else:
             _, next_action = self._get_max_value_and_action(state)
         self.last_state = np.copy(state)
+        self.last_action = next_action
         return next_action
